@@ -40,6 +40,11 @@ export class GildedRose {
 
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
+      let decrement = 1;
+      if (this.items[i].name == 'Conjured') {
+        // Conjured items degrade in quality twice as fast as normal items
+        decrement *= 2;
+      }
       if (this.items[i].name == 'Aged Brie') {
         this.updateQualityAgedBrie(this.items[i]);
       } else if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
@@ -47,9 +52,9 @@ export class GildedRose {
       } else if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
         // Once sell by date has passed, quality degrades twice as fast
         if (this.items[i].sellIn <= 0) {
-          this.items[i].quality = Math.max(this.items[i].quality - 1, 0);
+         decrement *= 2;
         }
-        this.items[i].quality = Math.max(this.items[i].quality - 1, 0);
+        this.items[i].quality = Math.max(this.items[i].quality - decrement, 0);
         this.items[i].sellIn -= 1;
       }
     }

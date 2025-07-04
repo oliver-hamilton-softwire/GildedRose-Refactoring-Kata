@@ -78,7 +78,7 @@ describe('Gilded Rose', () => {
 
     const gildedRose2 = new GildedRose([new Item('Conjured', 4, 1)]);
     const items2 = gildedRose2.updateQuality();
-    expect(items[0].quality).toBe(0);
-    expect(items[0].sellIn).toBe(3);
+    expect(items2[0].quality).toBe(0);
+    expect(items2[0].sellIn).toBe(3);
   });
 });
